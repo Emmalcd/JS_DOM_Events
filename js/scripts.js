@@ -53,11 +53,14 @@ console.log(navegacion);
 console.log(1);
 window.addEventListener('load', function () { //Espera a que cargue el JS y los archivos de los que depende el HTML (css, imagenes, etc)
     console.log(2);
+
 });
 console.log(3);
 window.onload=function(){
     console.log(4);
     //Es exactamente lo mismo que window.addEventListener
+    console.clear();
+
 }
 
 window.addEventListener('DOMContentLoaded', function(){ //Solo espera por el HTML (Generalmente mas usado por que no se modifica el css con JS)
@@ -65,9 +68,9 @@ window.addEventListener('DOMContentLoaded', function(){ //Solo espera por el HTM
     
 })
 
-window.onscroll = function(){
-    console.log(`Escrollenado . . .`);
-}
+// window.onscroll = function(){
+//     console.log(`Escrollenado . . .`);
+// }
 
 // seleccionar un elemento y asociarles un evento 
 
@@ -79,3 +82,24 @@ boton.addEventListener('click', function(event){
     console.log("Enviando formulario...");
     event.preventDefault();
 });
+
+// Eventos de los inputs y textarea
+
+const nombre = document.querySelector('#nombre');
+const email = document.querySelector('#email');
+const mensaje = document.querySelector('#mensaje');
+const datos={
+    nombre:'',
+    email:'',
+    mensaje:''
+}
+
+nombre.addEventListener('input', leerInput);
+email.addEventListener('input', leerInput);
+mensaje.addEventListener('input', leerInput);
+
+function leerInput(event){
+    // console.log(event.target.value);
+    datos[event.target.id]=event.target.value;
+    console.log(datos);
+}
